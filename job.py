@@ -45,7 +45,7 @@ class Job:
 
     def pause(self):
         if (self.start_at):
-        
+            pass
 
     def stop(self):
         pass
