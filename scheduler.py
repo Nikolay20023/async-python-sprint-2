@@ -23,8 +23,12 @@ class Scheduler:
         self.error = None
         self.executor = self._executor()
 
-    def schedule(self, task):
-        self.ready.put(task)
+    def schedule(self, *tasks):
+        for task in tasks:
+            if len(self._pending) + len(self._running) > self.pool_size:
+                raise ValueError('Queue full')
+
+            task.scheduler = self
 
     def run(self):
         pass
